@@ -84,7 +84,7 @@ module Gryff_Mano_Computer #(parameter N_L = 16, N_M = 12 , N_S = 8)(
     wire AC_clk = master_clock;
     wire AC_INR = INR[3]; //bit [3] of INR is controlling the increment operation of Accumulator Register
     wire AC_LD = (D[0] && T[5]) || (D[1] && T[5]) || (D[2] && T[5]) || ((D[7] && (~J) && T[3]/*r*/) && B[9]) || ((D[7] && (~J) && T[3]/*r*/) && B[7]) || ((D[7] && (~J) && T[3]/*r*/) && B[6]); //From table 5-6 "AC <-"
-    wire AC_CLRn;    // CLR from table 5-6 then Complement
+    wire AC_CLRn = 1;    // CLR from table 5-6 then Complement
          register_16 Accumulator_register(
             .D(in_AC),   // Data input
             .Q(AC),         // Data output
@@ -98,7 +98,7 @@ module Gryff_Mano_Computer #(parameter N_L = 16, N_M = 12 , N_S = 8)(
     wire in_E; // Extended input from common bus
     wire E_clk = master_clock;
     wire E_LD = (D[1] && T[5]) || ((D[7] && (~J) && T[3]/*r*/) && B[8]) || ((D[7] && (~J) && T[3]/*r*/) && B[6]);   //From table 5-6 "E <-"
-    wire E_CLRn;    // CLR from table 5-6 then Complement
+    wire E_CLRn = 1;    // CLR from table 5-6 then Complement
          dff Extended_flag (
             .D(in_E),      // Data input
             .Q(E),         // Data output
@@ -173,9 +173,7 @@ module Gryff_Mano_Computer #(parameter N_L = 16, N_M = 12 , N_S = 8)(
            .S(S),
            .IR(IR),
            .T(T),
-           .INR(INR),
-           .in_AC(AC),
-           .AC_CLRn(AC_CLRn)
+           .INR(INR)
          );
         
     // [--] Sequence Counter
