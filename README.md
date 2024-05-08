@@ -1,6 +1,6 @@
 ### Gryffindor Mano Computer
+**Mano Computer  designed by Team Gryffindor 
 
-- Mano Computer  designed by Team Gryffindor 
 **Course name:** Microprocessor II
 **Programming language:** Verilog
 **Supervisors:** Dr. Hamdy Almonaier **,** Eng. Kamel Mohammed
