@@ -8,9 +8,7 @@ module arithmetic_logic_unit( input [15:0] DR, in_AC,
                                 output [3:0] INR,
                                 output reg E,
                                 output reg S,
-                                output reg [15:0] AC,
-                                output reg AC_CLRn,
-                                output reg E_CLRn
+                                output reg [15:0] AC
                                 );
                                 
     reg INR_CONDITIONS;
@@ -22,8 +20,6 @@ module arithmetic_logic_unit( input [15:0] DR, in_AC,
 
     initial begin
         S = 1;
-        AC_CLRn = 1;
-        E_CLRn = 1;
     end
 
     always @*
@@ -37,8 +33,8 @@ module arithmetic_logic_unit( input [15:0] DR, in_AC,
     else
         if(~(IR[15]))                                      /// reg ref
             case (IR)
-                16'h7800 :  AC_CLRn = 0;                                    //CLA
-                16'h7400 :  E_CLRn = 0;                                     //CLE
+                16'h7800 :  AC <= 16'h0;                                    //CLA
+                16'h7400 :  E = 0;                                     //CLE
                 16'h7200 :  AC = ~in_AC;                                    //CMA
                 16'h7100 :  E = ~in_E;                                      //CME
                 16'h7080 :  begin  AC <= (in_AC >> 1);                      //CIR
