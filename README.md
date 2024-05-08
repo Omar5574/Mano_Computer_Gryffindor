@@ -9,7 +9,7 @@ Mano Computer  designed by Team Gryffindor
    - [x] **Memory Reference**
    - [x] **Register Reference**
    - [ ] **Input - Output Reference**
--We have included both memory and register reference instructions. Please note that the specific instructions applied in the memory code are listed below:
+- We have included both memory and register reference instructions. Please note that the specific instructions applied in the memory code are listed below:
    - LDA
    - ADD
    - INC
